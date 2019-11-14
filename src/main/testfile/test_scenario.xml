@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<test>
+    <!-- open url -->
+    <action>
+        <name>openURL</name>
+        <URL>https://google.com</URL>
+    </action>
+
+    <!-- click (searchbar) to place a cursor -->
+    <action>
+        <name>Click</name>
+        <Locator>//*[@id="tsf"]/div[2]/div[1]/div[1]/div/div[2]/input</Locator>
+    </action>
+
+    <!-- put search request into search bar -->
+    <action>
+        <name>setValue</name>
+        <Locator>//*[@id="tsf"]/div[2]/div[1]/div[1]/div/div[2]/input</Locator>
+        <TextToInput>geeks for geeks</TextToInput>
+    </action>
+
+    <!-- click searchbtn -->
+    <action>
+        <name>Click</name>
+        <Locator>//*[@id="tsf"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]</Locator>
+    </action>
+
+    <!-- click first result -->
+    <action>
+        <name>Click</name>
+        <Locator>//*[@id="rso"]/div[1]/div/div/div/div/div[1]/a[1]/h3</Locator>
+    </action>
+
+    <!-- take a screenshot -->
+    <action>
+        <name>Screenshot</name>
+    </action>
+
+</test>

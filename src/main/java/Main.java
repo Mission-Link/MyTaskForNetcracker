@@ -1,24 +1,16 @@
-import com.google.common.io.Files;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 public class Main {
     private static String taskURL = "https://google.com";
     private static String taskClick = "//*[@id=\"sb_ifc0\"]";
 
     public static void main(String[] args) throws InterruptedException {
-        System.out.println("1+4=" + (1 + 4));
 
 //        System.setProperty("webdriver.chrome.driver", ".\\Driver\\chromedriver_m.exe");
 
@@ -53,10 +45,28 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Page title is: " + browser.getTitle());
-        takeScreenshot(browser);
 
-        browser.close();
+        System.out.println("Page title is: " + browser.getTitle());
+        WebElement unexistedSb = browser.findElement(By.id("//*[@id=\"tsf\"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]21"));
+        boolean b = isElementPresent(browser, By.xpath("//*[@id=\"tsf\"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]21"));
+        System.out.println("b: "+b);
+
+//        try {
+//            unexistedSb.isDisplayed();
+//        } catch (NoSuchElementException e) {
+//            System.out.println(e.getMessage());;
+//        }
+    }
+
+    private static boolean isElementPresent(WebDriver driver, By by) {
+        boolean isPresent = true;
+        try {
+            driver.findElement(by);
+        } catch (NoSuchElementException e) {
+            isPresent = false;
+        }
+        return isPresent;
+    }
 
 //        System.out.println("Page title is: "+browser.getTitle());
 
@@ -81,33 +91,31 @@ public class Main {
 //        webDriver.findElement(By.id("gsr")).click();
 
 
-    }
-
-    private static void openURL(WebDriver browser, String url){
+    private static void openURL(WebDriver browser, String url) {
         browser.get(url);
     }
 
-    private static void click(WebDriver browser, String xpath){
+    private static void click(WebDriver browser, String xpath) {
         WebElement webElement = browser.findElement(By.xpath(xpath));
         webElement.click();
     }
 
-    private static void setValue(WebDriver browser, String xpath, String text){
+    private static void setValue(WebDriver browser, String xpath, String text) {
         browser.findElement(By.xpath(xpath)).sendKeys(text);
     }
 
-    private static boolean checkElementVisible(WebDriver browser, String xpath){
+    private static boolean checkElementVisible(WebDriver browser, String xpath) {
         return browser.findElement(By.xpath(xpath)).isDisplayed();
     }
 
-    private static void takeScreenshot(WebDriver browser){
+    private static void takeScreenshot(WebDriver browser) {
         File screenDir = new File(".");
-        if(!screenDir.exists()){
+        if (!screenDir.exists()) {
             screenDir.mkdir();
         }
         File scrFile = ((TakesScreenshot) browser).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File(screenDir.getPath()+"\\screenshot.png"));
+            FileUtils.copyFile(scrFile, new File(screenDir.getPath() + "\\screenshot.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

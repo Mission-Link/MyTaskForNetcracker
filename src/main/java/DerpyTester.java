@@ -59,9 +59,9 @@ public class DerpyTester {
         browser.get(url);
     }
 
-    void click(String xpath) throws MyException {
+    void click(String xpath){
         WebElement webElement = browser.findElement(By.xpath(xpath));
-        MyException ex;
+
         if (!webElement.isDisplayed()) {
             System.out.println("Web Element by path " + xpath + " is not displayable");
             return;
@@ -69,6 +69,7 @@ public class DerpyTester {
         else {
             try {
                 webElement.click();
+//                webElement.sendKeys(Keys.RETURN); //press Enter key
             } catch (Exception e) {
                 System.out.println("Exception!\n Impossible to click element by path: " + xpath);
                 System.out.println(e.getMessage());

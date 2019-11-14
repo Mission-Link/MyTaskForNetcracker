@@ -1,3 +1,7 @@
+import org.testng.annotations.BeforeTest;
+
+import java.util.Queue;
+
 public class Main2 {
     public static void main(String[] args) {
         String url = "https://google.com";
@@ -7,9 +11,20 @@ public class Main2 {
         String clickSearchButtn = "//*[@id=\"tsf\"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]"; //
         //*[@id="tsf"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]
         String firstResult = "//*[@id=\"rso\"]/div[1]/div/div/div/div[1]/a/h3";
-        String firstResult2 = "//*[@id=\"rso\"]/div[1]/div/div/div/div/div[1]/a[1]/h3";
+        String firstResult2 = "//*[@id=\"rso\"]/div[1]/div/div/div/div/div[1]/a/div/cite";
+
+        /*
+        new
+         */
+
+        Queue<DerpyTester> derpyTesterQueue = null;
+
+        /*
+        new end
+         */
 
         DerpyTester derpyTester = new DerpyTester();
+
         try {
             derpyTester.openURL(url);
             derpyTester.maximizeWindow();
