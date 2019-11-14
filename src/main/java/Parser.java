@@ -48,8 +48,6 @@ public class Parser {
         doc.getDocumentElement().normalize(); //normalization?
 
         Element root = doc.getDocumentElement();
-        System.out.println("Root element: " + root.getNodeName());
-        System.out.println("-----------");
 
         ActionDeque actionDeque = new ActionDeque();
 
@@ -66,7 +64,7 @@ public class Parser {
      * action child
      *
      * @param actionDeque deque that stores Action subclass instance
-     * @param parent parent node
+     * @param parent      parent node
      */
     private static void analyseNode(ActionDeque actionDeque, NodeList parent) {
         for (int i = 0; i < parent.getLength(); i += 1) {

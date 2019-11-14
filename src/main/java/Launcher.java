@@ -10,7 +10,7 @@ public class Launcher {
     private ActionTranslator actionTranslator = null;
 
     @BeforeTest
-    private void setUpTester(){
+    private void setUpTester() {
         derpyTester = new DerpyTester();
         String path = ".\\src\\main\\testfile\\test_scenario.xml";
         try {
@@ -24,12 +24,12 @@ public class Launcher {
     }
 
     @Test
-    private void testIt(){
-            actionTranslator.executeDeque();
+    private void testIt() {
+        actionTranslator.executeDeque();
     }
 
     @AfterTest
-    private void stopTester(){
+    private void stopTester() {
         derpyTester.exitBrowser();
     }
 

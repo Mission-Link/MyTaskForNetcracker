@@ -3,6 +3,8 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class DerpyTester {
 
     /**
      * Constructor with String param
+     *
      * @param browserName specified WebDriver name
      *                    that has to be created
      */
@@ -74,6 +77,7 @@ public class DerpyTester {
 
     /**
      * Opens a web page
+     *
      * @param url (String) web page URL
      */
     void openURL(String url) {
@@ -82,6 +86,7 @@ public class DerpyTester {
 
     /**
      * Clicks the element
+     *
      * @param xpath (String) Xpath to element that needs to be clicked
      */
     void click(String xpath) {
@@ -104,8 +109,9 @@ public class DerpyTester {
 
     /**
      * Sets text to web element
+     *
      * @param xpath (String) xpath to web elem
-     * @param text (String) text that needs to be set
+     * @param text  (String) text that needs to be set
      */
     void setValue(String xpath, String text) {
         browser.findElement(By.xpath(xpath)).sendKeys(text);
@@ -113,6 +119,7 @@ public class DerpyTester {
 
     /**
      * Chechs whether web element visible
+     *
      * @param xpath path to element
      * @return true if visible and false if not
      */
