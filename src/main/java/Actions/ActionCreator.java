@@ -2,6 +2,10 @@ package Actions;
 
 import java.util.ArrayList;
 
+/**
+ * This class uses by class Parser to retrieve an Action obj
+ * from ArrayList<String> instance that stores action tags
+ */
 public class ActionCreator {
 
     private static final String OPEN_URL = "openurl";
@@ -11,6 +15,11 @@ public class ActionCreator {
 
     private Action action;
 
+    /**
+     * Creates an instance of Action subclass
+     * @param arrayList stores action parameters
+     * @return Action subclass object
+     */
     public Action createAction(ArrayList<String> arrayList) {
         String actionName = arrayList.get(0);
 

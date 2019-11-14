@@ -1,5 +1,9 @@
 package Actions;
 
+/*
+An abstract class to store a parsed from XML file action that
+needs to be tested
+ */
 public abstract class Action {
     private String actionName;
 

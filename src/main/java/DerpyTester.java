@@ -1,6 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
-import org.omg.CORBA.UserException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.opera.OperaDriver;
@@ -12,7 +11,12 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
+/*
+This class encapsulates WebDriver obj and provides behaviour that needs
+to be tested
+ */
 public class DerpyTester {
+
     private WebDriver browser;
 
     //constructors
@@ -22,6 +26,11 @@ public class DerpyTester {
         browser = new ChromeDriver();
     }
 
+    /**
+     * Constructor with String param
+     * @param browserName specified WebDriver name
+     *                    that has to be created
+     */
     public DerpyTester(String browserName) {
         switch (browserName.toLowerCase()) {
             case "chrome":
@@ -42,10 +51,16 @@ public class DerpyTester {
 
     //methods
 
-    void maximizeWindow(){
+    /**
+     * Maximizes Window
+     */
+    void maximizeWindow() {
         browser.manage().window().maximize();
     }
 
+    /**
+     * Finishes work
+     */
     void exitBrowser() {
         browser.close();
         browser.quit();
@@ -55,18 +70,25 @@ public class DerpyTester {
         return browser;
     }
 
+    /**
+     * Opens a web page
+     * @param url (String) web page URL
+     */
     void openURL(String url) {
         browser.get(url);
     }
 
-    void click(String xpath){
+    /**
+     * Clicks the element
+     * @param xpath (String) Xpath to element that needs to be clicked
+     */
+    void click(String xpath) {
         WebElement webElement = browser.findElement(By.xpath(xpath));
 
         if (!webElement.isDisplayed()) {
             System.out.println("Web Element by path " + xpath + " is not displayable");
             return;
-        }
-        else {
+        } else {
             try {
                 webElement.click();
 //                webElement.sendKeys(Keys.RETURN); //press Enter key
@@ -79,14 +101,28 @@ public class DerpyTester {
         }
     }//end of method click()
 
+
+    /**
+     * Sets text to web element
+     * @param xpath (String) xpath to web elem
+     * @param text (String) text that needs to be set
+     */
     void setValue(String xpath, String text) {
         browser.findElement(By.xpath(xpath)).sendKeys(text);
     }
 
+    /**
+     * Chechs whether web element visible
+     * @param xpath path to element
+     * @return true if visible and false if not
+     */
     boolean checkElementVisible(String xpath) {
         return browser.findElement(By.xpath(xpath)).isDisplayed();
     }
 
+    /**
+     * Takes a screenshot
+     */
     void takeScreenshot() {
         String uniqueScreenshotName = generateUniqueDT();
 
@@ -113,8 +149,7 @@ public class DerpyTester {
         DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("ddMMYY");
         String f1 = formatter1.format(localTime);
         String f2 = formatter2.format(localDate);
-        String merge = f1 + "_" + f2;
-        return merge;
+        return f1 + "_" + f2;
     }
 
 }//end of class DerpyTester

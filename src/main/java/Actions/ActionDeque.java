@@ -3,6 +3,10 @@ package Actions;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+/*
+ *Class ActionDeque encapsulates deque instance that
+ * stores actions which require to test
+ */
 public class ActionDeque {
     private Deque<Action> actionDeque;
 
@@ -15,7 +19,6 @@ public class ActionDeque {
     public void putAction(Action action){
         actionDeque.add(action);
     }
-
 
 
     public void printDeque(){
@@ -47,4 +50,5 @@ public class ActionDeque {
     public Deque<Action> getActionDeque() {
         return actionDeque;
     }
-}
+
+}//end of class

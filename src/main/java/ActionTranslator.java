@@ -1,21 +1,40 @@
 import Actions.*;
 
+/**
+ *This class is required for executing
+ * action deque
+ * Translates action subclass instances into DerpyTester instance methods
+ */
 public class ActionTranslator {
     private ActionDeque actionDeque;
     private DerpyTester derpyTester;
 
+    /**
+     * Constructor ActionTranslator
+     * @param derpyTester an instance of DerpyTester class that encapsulates WebDriver and
+     *                    provides all the core functions
+     * @param actionDeque an instance of ActionDeque that contains instances of
+     *                    subclasses of class Action
+     */
     public ActionTranslator(DerpyTester derpyTester, ActionDeque actionDeque) {
         this.actionDeque = actionDeque;
         this.derpyTester = derpyTester;
     }
 
-    public void addAction(Action elem) {
-        actionDeque.putAction(elem);
-    }
-
-    public void executeDeque() throws MyException {
+    /**
+     * Method executes actions that stores in actionDeque
+     * Provides a translation between Action object and behavior of derpyTester
+     */
+    public void executeDeque() {
         for (Action tmp : actionDeque.getActionDeque()) {
-            System.out.println(tmp.getClass().toString());
+            /*
+            takes an object from deque and checks whether it matches to
+            Action subclasses
+
+            if matches then casts to found subclass
+
+            and launches required derpyTester method
+             */
             if (tmp.getClass().toString().endsWith("OpenURLAct")) {
                 OpenURLAct action = (OpenURLAct) tmp;
                 derpyTester.openURL(action.getUrl());
@@ -37,8 +56,5 @@ public class ActionTranslator {
         }//end of for each loop
     }//end of method execDeque()
 
-    public void printDeque() throws MyException {
-        actionDeque.printDeque();
-    }//end of method printDeque()
 
-}
+}//end of class
