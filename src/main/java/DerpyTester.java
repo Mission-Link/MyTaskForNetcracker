@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
 
 /*
 This class encapsulates WebDriver obj and provides behaviour that needs
@@ -24,6 +25,7 @@ public class DerpyTester {
     public DerpyTester() {
         WebDriverManager.chromedriver().setup();
         browser = new ChromeDriver();
+//        browser.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }
 
     /**
@@ -46,7 +48,7 @@ public class DerpyTester {
                 browser = new ChromeDriver();
                 break;
         }
-
+        browser.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
     }//end of constructor with String param
 
     //methods
@@ -83,13 +85,11 @@ public class DerpyTester {
      * @param xpath (String) Xpath to element that needs to be clicked
      */
     void click(String xpath) {
-        WebElement webElement = browser.findElement(By.xpath(xpath));
-
-        if (!webElement.isDisplayed()) {
-            System.out.println("Web Element by path " + xpath + " is not displayable");
-            return;
-        } else {
+        WebElement webElement = null;
+        {
             try {
+                WebDriverWait wait = new WebDriverWait(browser, 3);
+                webElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
                 webElement.click();
 //                webElement.sendKeys(Keys.RETURN); //press Enter key
             } catch (Exception e) {
