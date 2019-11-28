@@ -1,11 +1,14 @@
-package Actions;
+package actions;
 
-public class SetValueAct extends Action{
+import org.openqa.selenium.By;
+import strikepackage.Browser;
+
+public class SetValueAct extends Action {
     private String locatorXpath;
     private String textToSet;
 
-    public SetValueAct(String locatorXpath, String textToSet) {
-        super("setValue");
+    public SetValueAct(String locatorXpath, String textToSet, Browser browser) {
+        super("setvalue", browser);
         this.locatorXpath = locatorXpath;
         this.textToSet = textToSet;
     }
@@ -25,4 +28,10 @@ public class SetValueAct extends Action{
                 ", textToSet='" + textToSet + '\'' +
                 '}';
     }
-}
+
+    @Override
+    public void run() {
+        browser.getWebDriver().findElement(By.xpath(locatorXpath)).sendKeys(textToSet);
+    }
+
+}//end of class

@@ -1,39 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <test>
     <!-- open url -->
-    <action>
+    <Action>
         <name>openURL</name>
         <URL>https://google.com</URL>
-    </action>
+    </Action>
 
     <!-- click (searchbar) to place a cursor -->
-    <action>
+    <Action>
         <name>Click</name>
         <Locator>//*[@id="tsf"]/div[2]/div[1]/div[1]/div/div[2]/input</Locator>
-    </action>
+    </Action>
+
+    <!-- Let's test some "unsupported yet" action -->
+    <Action>
+        <name>Fuck geese</name>
+        <Quantity>over 9000</Quantity>
+    </Action>
 
     <!-- put search request into search bar -->
-    <action>
+    <Action>
         <name>setValue</name>
         <Locator>//*[@id="tsf"]/div[2]/div[1]/div[1]/div/div[2]/input</Locator>
         <TextToInput>geeks for geeks</TextToInput>
-    </action>
+    </Action>
 
     <!-- click searchbtn -->
-    <action>
+    <Action>
         <name>Click</name>
         <Locator>//*[@id="tsf"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]</Locator>
-    </action>
+    </Action>
 
     <!-- click first result -->
-    <action>
+    <Action>
         <name>Click</name>
         <Locator>//*[@id="rso"]/div[1]/div/div/div/div/div[1]/a[1]/h3</Locator>
-    </action>
+    </Action>
 
     <!-- take a screenshot -->
-    <action>
+    <Action>
         <name>Screenshot</name>
-    </action>
+    </Action>
+
+    <!-- One more "not supported yet" action -->
+    <Action>
+        <name>Rob caravans</name>
+        <Location>Afghanistan</Location>
+    </Action>
 
 </test>

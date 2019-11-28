@@ -22,7 +22,7 @@ d.	Работа с браузером осуществляется через б
 Пример конфигурационного файла:
 Action	Params	Description
 openUrl	https://google.com
-Open Browser
+Open strikepackage.Browser
 Click	//*[@id="sb_ifc0"]	Click Element
 setValue	//*[@id="sb_ifc0"] | Netcracker	Set Text Value
 Click	//*[@id="tsf"]/div[2]/div[3]/center/input[1]	Click Search Button

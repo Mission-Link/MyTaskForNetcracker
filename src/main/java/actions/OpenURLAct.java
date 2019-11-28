@@ -1,10 +1,12 @@
-package Actions;
+package actions;
 
-public class OpenURLAct extends Action{
+import strikepackage.Browser;
+
+public class OpenURLAct extends Action {
     private String url;
 
-    public OpenURLAct(String url) {
-        super("openURL");
+    public OpenURLAct(String url, Browser browser) {
+        super("openurl", browser);
         this.url = url;
     }
 
@@ -18,4 +20,9 @@ public class OpenURLAct extends Action{
                 "url='" + url + '\'' +
                 '}';
     }
+
+    public void run() {
+        browser.getWebDriver().get(url);
+    }
+
 }
