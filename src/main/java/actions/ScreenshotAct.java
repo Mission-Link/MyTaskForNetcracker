@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class ScreenshotAct extends Action {
+public class ScreenshotAct extends Action implements IAction{
     public ScreenshotAct(Browser browser) {
         super("screenshot", browser);
     }

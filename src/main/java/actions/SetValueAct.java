@@ -3,7 +3,7 @@ package actions;
 import org.openqa.selenium.By;
 import strikepackage.Browser;
 
-public class SetValueAct extends Action {
+public class SetValueAct extends Action implements IAction{
     private String locatorXpath;
     private String textToSet;
 

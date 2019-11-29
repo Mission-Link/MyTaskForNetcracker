@@ -2,16 +2,28 @@ package actions;
 
 import strikepackage.Browser;
 
-public class NotSupportedYetAct extends Action{
-    private String message;
+import java.util.ArrayList;
 
-    public NotSupportedYetAct(String name, Browser browser) {
-        super(name, browser);
-        message = "Action: \""+name+"\" not supported yet";
+public class NotSupportedYetAct extends Action implements IAction{
+//    private String message;
+    private ArrayList<String> parameters;
+
+    public NotSupportedYetAct(ArrayList<String> parameters, Browser browser) {
+        super(parameters.get(0), browser);
+        this.parameters = parameters;
     }
 
     @Override
     public void run() {
-        System.out.println(message);
+        System.out.println(toString());
     }
-}
+
+    @Override
+    public String toString() {
+        return "NotSupportedYetAct{" +
+                "name='" + name + '\'' +
+                ", parameters=" + parameters +
+                "\n, browser=" + browser.getWebDriver().toString() +
+                '}';
+    }
+}//end of class

@@ -10,7 +10,7 @@ import java.util.Deque;
  * stores actions which require to test
  */
 public class ActionDeque {
-    private Deque<Action> actionDeque;
+    private Deque<IAction> actionDeque;
 
     //constructor
     public ActionDeque() {
@@ -18,13 +18,13 @@ public class ActionDeque {
     }
 
     //methods
-    public void putAction(Action action) {
+    public void putAction(IAction action) {
         actionDeque.add(action);
     }
 
 
     public void printDeque() {
-        for (Action tmp : actionDeque) {
+        for (IAction tmp : actionDeque) {
 //            System.out.println(tmp.getClass().toString());
             if (tmp.getClass().toString().endsWith("OpenURLAct")) {
                 OpenURLAct action = (OpenURLAct) tmp;
@@ -44,12 +44,12 @@ public class ActionDeque {
         }//end of for each loop
     }//end of method printDeque()
 
-    public Deque<Action> getActionDeque() {
+    public Deque<IAction> getActionDeque() {
         return actionDeque;
     }
 
     public void execute(){
-        for(Action tmp: actionDeque){
+        for(IAction tmp: actionDeque){
             tmp.run();
         }
     }

@@ -8,7 +8,7 @@ import strikepackage.Browser;
 
 import java.util.Arrays;
 
-public class ClickAct extends Action {
+public class ClickAct extends Action implements IAction{
     private String locatorXpath;
 
     public ClickAct(String locatorXpath, Browser browser) {

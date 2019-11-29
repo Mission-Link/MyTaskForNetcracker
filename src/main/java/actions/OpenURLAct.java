@@ -2,7 +2,7 @@ package actions;
 
 import strikepackage.Browser;
 
-public class OpenURLAct extends Action {
+public class OpenURLAct extends Action implements IAction{
     private String url;
 
     public OpenURLAct(String url, Browser browser) {

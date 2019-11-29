@@ -2,7 +2,7 @@ package actions;
 
 import strikepackage.Browser;
 
-public abstract class Action implements IAction{
+public abstract class Action{
     protected String name;
     protected Browser browser;
 
@@ -12,6 +12,14 @@ public abstract class Action implements IAction{
     }
 
     @Override
-    public void run() {
+    public String toString() {
+        return "Action{" +
+                "name='" + name + '\'' +
+                ", browser=" + browser +
+                '}';
     }
+
+    //    @Override
+//    public void run() {
+//    }
 }

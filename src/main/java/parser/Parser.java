@@ -2,6 +2,7 @@ package parser;
 
 import actions.helpers.ActionDeque;
 import actions.helpers.ActionFactory;
+import logger.SimpleLogger;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -24,10 +25,12 @@ import java.util.ArrayList;
 public class Parser {
     private String pathToXML;
     private ActionFactory actionFactory;
+    private SimpleLogger simpleLogger;
 
     public Parser(String pathToXML, Browser browser) {
         this.pathToXML = pathToXML;
         actionFactory = new ActionFactory(browser);
+        simpleLogger = new SimpleLogger();
     }
 
     /**
@@ -51,7 +54,7 @@ public class Parser {
         //-------
 
         for (ArrayList<String> tmp : allReceivedParams) {
-            actionDeque.putAction(actionFactory.createAction(tmp));
+            actionDeque.putAction(actionFactory.createAction(tmp, simpleLogger));
         }
 
         return actionDeque;
