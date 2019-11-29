@@ -14,40 +14,16 @@ public class Testie {
 
     @BeforeTest
     private void setUp() {
-
-//        String url = "https://google.com";
-//        String click = "//*[@id=\"tsf\"]/div[2]/div[1]/div[1]/div/div[2]/input";
-//        String setV1 = "//*[@id=\"tsf\"]/div[2]/div[1]/div[1]/div/div[2]/input";
-//        String setV2 = "geeks for geeks";
-//        String clickSearchButtn = "//*[@id=\"tsf\"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]"; //
-//        //*[@id="tsf"]/div[2]/div[1]/div[2]/div[2]/div[2]/center/input[1]
-//        String firstResult = "//*[@id=\"rso\"]/div[1]/div/div/div/div[1]/a/h3";
-//        String firstResult2 = "//*[@id=\"rso\"]/div[1]/div/div/div/div/div[1]/a/div/cite";
-
         browser = new Browser();
         String path = ".\\src\\main\\testfile\\test_scenario.xml";
         Parser parser = new Parser(path, browser);
         try {
             actionDeque = parser.parseXML();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
+        } catch (IOException | SAXException e) {
+            System.out.println("Impossible to parse XML file");
+            System.out.println(e.getMessage());
         }
-
-//        Action openURLAct = new OpenURLAct(url, browser);
-//        actionDeque.putAction(openURLAct);
-//        Action clickAct = new ClickAct(click, browser);
-//        actionDeque.putAction(clickAct);
-//        Action setValueAct = new SetValueAct(setV1, setV2, browser);
-//        actionDeque.putAction(setValueAct);
-//        Action clickAct2 = new ClickAct(clickSearchButtn, browser);
-//        actionDeque.putAction(clickAct2);
-//        Action clickAct3 = new ClickAct(firstResult2, browser);
-//        actionDeque.putAction(clickAct3);
-//        Action screenshotAct = new ScreenshotAct(browser);
-//        actionDeque.putAction(screenshotAct);
-    }
+    }//end of setUp method
 
     @Test
     private void performTest() {
@@ -60,4 +36,4 @@ public class Testie {
         browser.getWebDriver().quit();
     }
 
-}
+}//end of class
