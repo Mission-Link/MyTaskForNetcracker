@@ -9,6 +9,12 @@ public class MaximizeWindowAct extends Action implements IAction{
 
     @Override
     public void run() {
-        browser.getWebDriver().manage().window().maximize();
+        try{
+            browser.getWebDriver().manage().window().maximize();
+            browser.getTest().pass("Browser window maximized successfully");
+        }catch (Exception e){
+            browser.getTest().fail("Impossible to maximize the window of a browser");
+        }
+
     }
 }

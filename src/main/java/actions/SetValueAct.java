@@ -31,7 +31,12 @@ public class SetValueAct extends Action implements IAction{
 
     @Override
     public void run() {
-        browser.getWebDriver().findElement(By.xpath(locatorXpath)).sendKeys(textToSet);
+        try {
+            browser.getWebDriver().findElement(By.xpath(locatorXpath)).sendKeys(textToSet);
+            browser.getTest().pass("Value \""+textToSet+"\" set by path \""+locatorXpath+"\" successfully");
+        }catch (Exception e){
+            browser.getTest().fail("Impossible to set value \""+textToSet+"\" by path \""+locatorXpath+"\"");
+        }
     }
 
 }//end of class

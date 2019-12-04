@@ -15,7 +15,14 @@ public class NotSupportedYetAct extends Action implements IAction{
 
     @Override
     public void run() {
-        System.out.println(toString());
+        try{
+            browser.getTest().warning("Received not \'supported yet action\' " +
+                    "with parameters\n: "+toString());
+            System.out.println(toString());
+        }catch (Exception e){
+            browser.getTest().fail("Impossible to handle\'supported yet action\' " +
+                    "with parameters\n: "+toString());
+        }
     }
 
     @Override

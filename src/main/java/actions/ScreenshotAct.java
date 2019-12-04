@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class ScreenshotAct extends Action implements IAction{
+public class ScreenshotAct extends Action implements IAction {
     public ScreenshotAct(Browser browser) {
         super("screenshot", browser);
     }
@@ -23,18 +23,22 @@ public class ScreenshotAct extends Action implements IAction{
 
     @Override
     public void run() {
-        String uniqueScreenshotName = generateUniqueDT();
-
-        File screenDir = new File("screenshots");
-        if (!screenDir.exists()) {
-            screenDir.mkdir();
-        }
-        File scrFile = ((TakesScreenshot) browser.getWebDriver()).getScreenshotAs(OutputType.FILE);
         try {
-            FileUtils.copyFile(scrFile, new File(screenDir.getPath() +
-                    File.separator + "screenshot_" + uniqueScreenshotName + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
+            String uniqueScreenshotName = generateUniqueDT();
+            File screenDir = new File("screenshots");
+            if (!screenDir.exists()) {
+                screenDir.mkdir();
+            }
+            File scrFile = ((TakesScreenshot) browser.getWebDriver()).getScreenshotAs(OutputType.FILE);
+            try {
+                FileUtils.copyFile(scrFile, new File(screenDir.getPath() +
+                        File.separator + "screenshot_" + uniqueScreenshotName + ".png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            browser.getTest().pass("Screenshot created successfully");
+        } catch (Exception e) {
+            browser.getTest().fail("Impossible to take a screenshot");
         }
     }//end of run() method
 

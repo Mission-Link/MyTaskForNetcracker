@@ -50,7 +50,6 @@ public class ActionFactory {
             case MAXIMIZE_WINDOW:
                 return new MaximizeWindowAct(browser);
             default:
-//                simpleLogger.writeLog(arrayList);
                 NotSupportedYetAct act = new NotSupportedYetAct(arrayList, browser);
                 ArrayList<String> arrayList2 = new ArrayList<>();
                 arrayList2.add(act.toString());

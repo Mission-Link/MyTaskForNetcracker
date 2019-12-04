@@ -22,7 +22,12 @@ public class OpenURLAct extends Action implements IAction{
     }
 
     public void run() {
-        browser.getWebDriver().get(url);
+        try{
+            browser.getWebDriver().get(url);
+            browser.getTest().pass("Navigated to \""+url+"\"");
+        }catch (Exception e){
+            browser.getTest().fail("Impossible to navigated to \""+url+"\"");
+        }
     }
 
 }
